@@ -47,16 +47,16 @@
     	}	// end navbar function
 
     	,loginView:function(t){
-			var r = function(e){
-				var t = document.getElementById(e).value;
+			var r = function(currentUser){
+				var t = document.getElementById(currentUser).value;
 				return TAHelp.getMemberlistOf(t) === false ? false : true
 			};
-			var i = function(e,t,handler){
+			var i = function(currentUser,t,handler){
 				if(!t()){
-					document.getElementById(e).innerHTML = handler;
-					document.getElementById(e).style.display="block"
+					document.getElementById(currentUser).innerHTML = handler;
+					document.getElementById(currentUser).style.display="block"
 				} else {
-					document.getElementById(e).style.display="none"
+					document.getElementById(currentUser).style.display="none"
 				}
 			};
 			var s = function(){
@@ -92,9 +92,9 @@
 
 				// 綁定登入表單的登入檢查事件 Parse.User.logIn(id,pw)
 				Parse.User.logIn(document.getElementById("form-signin-student-id").value, document.getElementById("form-signin-password").value,{
-					success:function(e){
+					success:function(currentUser){
 						s()
-					},error:function(e,t){
+					},error:function(currentUser,t){
 						i("form-signin-message",function(){
 							return false
 						},"Invaild username or password.")
@@ -129,9 +129,9 @@
 				user.set("password",document.getElementById("form-signup-password").value);
 				user.set("email",document.getElementById("form-signup-email").value);
 				user.signUp(null,{
-					success:function(e){
+					success:function(currentUser){
 						s()
-					},error:function(e,t){
+					},error:function(currentUser,t){
 						i("form-signup-message",function(){
 							return false
 						},user.message)
@@ -164,8 +164,8 @@
 					var s = TAHelp.getMemberlistOf(currentUser.get("username")).filter(function(e){
 						return e.StudentId !== currentUser.get("username") ? true : false
 					}).map(function(e){
-						e.scores=["0","0","0","0"];
-						return e
+						currentUser.scores=["0","0","0","0"];
+						return currentUser
 					})
 				} else {	// evaluation 已存在
 					var s = query.toJSON().evaluations
