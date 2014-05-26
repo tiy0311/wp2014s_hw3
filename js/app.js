@@ -173,7 +173,10 @@
 
 				// 綁定表單送出的事件()
 				document.getElementById("content").innerHTML=e.evaluationView(s);
+
+				// 檢查是否已評過分
 				document.getElementById("evaluationForm-submit").value = query === undefined ? "送出表單" : "修改表單";
+
 				document.getElementById("evaluationForm").addEventListener("submit",function(){
 					for(var o=0;o<s.length;o++){
 						for(var u=0;u<s[o].scores.length;u++){

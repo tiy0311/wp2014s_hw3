@@ -13,6 +13,11 @@
   <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" rel="stylesheet">
   <link href="http://getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet">
   <link href="./css/style.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans+SC' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Advent+Pro:500' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Geo' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn"t work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -25,22 +30,24 @@
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button"><span class="sr-only">Peer
-        Evaluation App</span>
-        </button> <a class="navbar-brand" href="#">Peer
-        Evaluation App</a>
+        <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button"><span class="sr-only">Peer Evaluation App</span>
+        </button>
+        <a class="navbar-brand" href="#">
+          <span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;Peer Evaluation App
+        </a>
       </div>
 
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li id="loginButton"><a href="#login/">Login</a>
+          <li id="loginButton">
+            <a href="#login/"><span class="glyphicon glyphicon-log-in">&nbsp;Login</a>
           </li>
 
-          <li id="evaluationButton"><a href="#peer-evaluation/">Peer
-          Evaluation</a>
+          <li id="evaluationButton">
+            <a href="#peer-evaluation/"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Peer Evaluation</a>
           </li>
 
-          <li id="logoutButton"><a href="#">Logout</a>
+          <li id="logoutButton"><a href="#"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a>
           </li>
         </ul>
       </div>
@@ -77,7 +84,7 @@
         <form id="evaluationForm">
         <div class="col-md-12">
           {{~it :member:index}}
-          <div>
+          <div class="a-member">
             <h2>{{=member.name}}</h2>
             <ol>
               <li>
@@ -175,8 +182,9 @@
       </div>
       </script>
       <script id="updateSuccessView" type="text/x-dot-template">
-        <div class="starter-template">
-          您的提交已送出，請記得登出系統。<br />謝謝您的使用。
+        <div class="starter-template" style="font-size:30px;text-align:left">
+          您的提交已送出，請記得logout哦&nbsp;&nbsp;<span class="glyphicon glyphicon-hand-up"></span><br />
+          感謝您的使用～^_^
         </div>
       </script>
       <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
