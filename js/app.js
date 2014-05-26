@@ -12,8 +12,8 @@
 	var t={
 		loginRequiredView:function(e){
 			return function(){
-				var currentUser = Parse.User.current();
-				if(currentUser){
+				var t = Parse.User.current();
+				if(t){
 					e()
 				} else {
 					// 重新導向到登入頁面，登入後會回到商品
@@ -26,8 +26,8 @@
   	// 可選-編寫共用函數();
   	var handler = {
     	navbar: function(){
-    		var currentUser = Parse.User.current();
-			if(currentUser){	// 登入時，顯示哪些buttons(logout,evaluation)
+    		var e = Parse.User.current();
+			if(e){	// 登入時，顯示哪些buttons(logout,evaluation)
 				document.getElementById("loginButton").style.display="none";
 				document.getElementById("logoutButton").style.display="block";
 				document.getElementById("evaluationButton").style.display="block"
@@ -47,16 +47,16 @@
     	}	// end navbar function
 
     	,loginView:function(t){
-			var r = function(currentUser){
-				var t = document.getElementById(currentUser).value;
+			var r = function(e){
+				var t = document.getElementById(e).value;
 				return TAHelp.getMemberlistOf(t) === false ? false : true
 			};
-			var i = function(currentUser,t,handler){
+			var i = function(e,t,handler){
 				if(!t()){
-					document.getElementById(currentUser).innerHTML = handler;
-					document.getElementById(currentUser).style.display="block"
+					document.getElementById(e).innerHTML = handler;
+					document.getElementById(e).style.display="block"
 				} else {
-					document.getElementById(currentUser).style.display="none"
+					document.getElementById(e).style.display="none"
 				}
 			};
 			var s = function(){
@@ -92,9 +92,9 @@
 
 				// 綁定登入表單的登入檢查事件 Parse.User.logIn(id,pw)
 				Parse.User.logIn(document.getElementById("form-signin-student-id").value, document.getElementById("form-signin-password").value,{
-					success:function(currentUser){
+					success:function(e){
 						s()
-					},error:function(currentUser,t){
+					},error:function(e,t){
 						i("form-signin-message",function(){
 							return false
 						},"Invaild username or password.")
@@ -129,9 +129,9 @@
 				user.set("password",document.getElementById("form-signup-password").value);
 				user.set("email",document.getElementById("form-signup-email").value);
 				user.signUp(null,{
-					success:function(currentUser){
+					success:function(e){
 						s()
-					},error:function(currentUser,t){
+					},error:function(e,t){
 						i("form-signup-message",function(){
 							return false
 						},user.message)
@@ -164,8 +164,8 @@
 					var s = TAHelp.getMemberlistOf(currentUser.get("username")).filter(function(e){
 						return e.StudentId !== currentUser.get("username") ? true : false
 					}).map(function(e){
-						currentUser.scores=["0","0","0","0"];
-						return currentUser
+						e.scores=["0","0","0","0"];
+						return e
 					})
 				} else {	// evaluation 已存在
 					var s = query.toJSON().evaluations
