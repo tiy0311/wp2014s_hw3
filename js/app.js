@@ -145,11 +145,11 @@
 			var Evaluation = Parse.Object.extend("Evaluation");	// 取得parse的Evaluation Class // t
 			var currentUser = Parse.User.current();	// 檢查登入	// n
 
-			var evaluationACL = new Parse.ACL;	// ACL:Access Control List	// r
-			evaluationACL.setPublicReadAccess(false);
-			evaluationACL.setPublicWriteAccess(false);
-			evaluationACL.setReadAccess(currentUser,true);
-			evaluationACL.setWriteAccess(currentUser,true);
+			var r = new Parse.ACL;	// ACL:Access Control List
+			r.setPublicReadAccess(false);
+			r.setPublicWriteAccess(false);
+			r.setReadAccess(currentUser,true);
+			r.setWriteAccess(currentUser,true);
 
 			// 設定查詢參數()
 			var query = new Parse.Query(Evaluation);	// 創一個查Evaluation的Query物件	// i
@@ -184,9 +184,9 @@
 					}
 
 					if(query===undefined){
-						query = new query;
+						query = new Evaluation;
 						query.set("user",currentUser);
-						query.setACL(evaluationACL)
+						query.setACL(r)
 					}
 
 					console.log(s);
