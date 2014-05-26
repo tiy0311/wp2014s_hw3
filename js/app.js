@@ -26,7 +26,7 @@
   	// 可選-編寫共用函數();
   	var handler = {
     	navbar函數: function(){
-    		var currentUser=Parse.User.current();
+    		var currentUser = Parse.User.current();
 			if(currentUser){	// 登入時，顯示哪些buttons(logout,evaluation)
 				document.getElementById("loginButton").style.display="none";
 				document.getElementById("logoutButton").style.display="block";
@@ -36,6 +36,7 @@
 				document.getElementById("logoutButton").style.display="none";
 				document.getElementById("evaluationButton").style.display="none"
 			}
+
 			// 登出時
 			document.getElementById("logoutButton").addEventListener("click",function(){
 				Parse.User.logOut();
@@ -75,7 +76,7 @@
 				return password_consistent
 			};
 
-			document.getElementById("content").innerHTML=e.loginView();
+			document.getElementById("content").innerHTML = e.loginView();
 			// 綁定登入表單的學號檢查事件
 			document.getElementById("form-signin-student-id").addEventListener("keyup",function(){
 				i("form-signin-message",function(){
@@ -203,7 +204,7 @@
 		})
   	};
 
-  	var App=Parse.Router.extend({
+  	var App = Parse.Router.extend({
 		routes:{
 			// 路徑匹配
 			"":"indexView",
