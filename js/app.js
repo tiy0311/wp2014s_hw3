@@ -25,7 +25,7 @@
 
   	// 可選-編寫共用函數();
   	var handler = {
-    	navbar函數: function(){
+    	navbar: function(){
     		var currentUser = Parse.User.current();
 			if(currentUser){	// 登入時，顯示哪些buttons(logout,evaluation)
 				document.getElementById("loginButton").style.display="none";
